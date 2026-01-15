@@ -5,7 +5,13 @@ import os
 import ctypes
 from ctypes import wintypes
 
-PROGMAN_FILE = "progman.dat"
+PROGMAN_FILE = """[programs]
+notepad = c:\\windows\\notepad.exe
+calc = c:\\windows\\system32\\calc.exe
+
+[paint]
+paint =pbrush.exe"""
+
 BUTTONS_PER_ROW = 4
 
 shell32 = ctypes.windll.shell32
@@ -100,14 +106,14 @@ class ProgManGUI:
         self.canvas.yview_scroll(int(-event.delta / 120), "units")
 
     def load_programs(self):
-        if not os.path.exists(PROGMAN_FILE):
+        if PROGMAN_FILE=="":
             messagebox.showerror("Erro", "progman.dat não encontrado")
             return
 
         current_group = None
         row = col = 0
-
-        with open(PROGMAN_FILE, "r", encoding="utf-8") as f:
+        f=PROGMAN_FILE.split("\n")
+        if 0==0:
             for line in f:
                 line = line.strip()
                 if not line:
