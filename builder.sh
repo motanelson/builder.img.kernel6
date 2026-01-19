@@ -44,7 +44,7 @@ printf "" > /mnt/rams/dev/console
 chmod 777 /mnt/rams/* 2> /dev/null
 sudo umount /mnt/rams 2>/dev/null
 echo '.........................................'
-g=32
+g=38
 h=boot.img
 dd if=/dev/zero of=$h bs=1M count=$g status=progress
 chmod 777 $h
@@ -55,7 +55,8 @@ echo '.........................................'
 syslinux  $h
 chmod 777 $h
 echo '.........................................'
-mcopy -i $h syslinux.cfg ::/syslinux.cfg
-mcopy -i $h initrd.img ::/initrd.img
-mcopy -i $h vmlinuz ::/vmlinuz
+echo "o" | mcopy -i $h syslinux.cfg ::/syslinux.cfg
+echo "o" | mcopy -i $h initrd.img ::/initrd.img
+echo "o" | mcopy -i $h vmlinuz ::/vmlinuz
+echo "o" | mcopy -i $h ldlinux.c32 ::/ldlinux.c32
 chmod 777 $h
