@@ -58,5 +58,4 @@ echo '.........................................'
 echo "o" | mcopy -i $h syslinux.cfg ::/syslinux.cfg
 echo "o" | mcopy -i $h initrd.img ::/initrd.img
 echo "o" | mcopy -i $h vmlinuz ::/vmlinuz
-echo "o" | mcopy -i $h ldlinux.c32 ::/ldlinux.c32
 chmod 777 $h
